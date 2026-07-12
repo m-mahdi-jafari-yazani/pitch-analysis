@@ -14,6 +14,3 @@ __pycache__/
 
 # Jupyter
 .ipynb_checkpoints/
-
-# Outputs (اگر نمی‌خواهی تصاویر خروجی را نسخه‌بندی کنی)
-outputs/
