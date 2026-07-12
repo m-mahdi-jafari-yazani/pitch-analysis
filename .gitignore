@@ -1,0 +1,19 @@
+# Virtual environments
+.venv/
+venv/
+
+# Python
+__pycache__/
+*.py[cod]
+
+# macOS
+.DS_Store
+
+# VS Code
+.vscode/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Outputs (اگر نمی‌خواهی تصاویر خروجی را نسخه‌بندی کنی)
+outputs/
