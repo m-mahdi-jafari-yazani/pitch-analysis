@@ -20,3 +20,17 @@ def plot_spectrogram(frequencies, times, spectrum, title):
 
     plt.tight_layout()
     plt.show()
+
+
+def plot_fft(frequencies, magnitude, title):
+    plt.figure(figsize=(10, 4))
+
+    plt.plot(frequencies, magnitude)
+
+    plt.title(title)
+    plt.xlabel("Frequency (Hz)")
+    plt.ylabel("Magnitude")
+
+    plt.grid(True)
+    plt.tight_layout()
+    plt.show()
