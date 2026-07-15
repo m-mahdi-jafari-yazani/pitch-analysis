@@ -1,8 +1,21 @@
+import os
+
 import matplotlib.pyplot as plt
 import numpy as np
 
 
-def plot_spectrogram(frequencies, times, spectrum, title):
+def create_output_directory(path):
+    if path:
+        os.makedirs(path, exist_ok=True)
+
+
+def plot_spectrogram(
+    frequencies,
+    times,
+    spectrum,
+    title,
+    save_path=None,
+):
     plt.figure(figsize=(10, 4))
 
     plt.pcolormesh(
@@ -19,10 +32,21 @@ def plot_spectrogram(frequencies, times, spectrum, title):
     plt.colorbar(label="Power (dB)")
 
     plt.tight_layout()
+
+    if save_path is not None:
+        create_output_directory(os.path.dirname(save_path))
+        plt.savefig(save_path, dpi=300, bbox_inches="tight")
+
     plt.show()
+    plt.close()
 
 
-def plot_fft(frequencies, magnitude, title):
+def plot_fft(
+    frequencies,
+    magnitude,
+    title,
+    save_path=None,
+):
     plt.figure(figsize=(10, 4))
 
     plt.plot(frequencies, magnitude)
@@ -33,9 +57,20 @@ def plot_fft(frequencies, magnitude, title):
 
     plt.grid(True)
     plt.tight_layout()
-    plt.show()
 
-def plot_pitch(times, pitch):
+    if save_path is not None:
+        create_output_directory(os.path.dirname(save_path))
+        plt.savefig(save_path, dpi=300, bbox_inches="tight")
+
+    plt.show()
+    plt.close()
+
+
+def plot_pitch(
+    times,
+    pitch,
+    save_path=None,
+):
     plt.figure(figsize=(10, 4))
 
     plt.plot(times, pitch)
@@ -47,4 +82,10 @@ def plot_pitch(times, pitch):
     plt.grid(True)
 
     plt.tight_layout()
+
+    if save_path is not None:
+        create_output_directory(os.path.dirname(save_path))
+        plt.savefig(save_path, dpi=300, bbox_inches="tight")
+
     plt.show()
+    plt.close()

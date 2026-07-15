@@ -1,19 +1,19 @@
-from src.pitch import estimate_pitch
-from src.visualization import plot_pitch
-from src.audio import load_audio
-from src.analysis import compute_spectrogram
-from src.visualization import (
-    plot_spectrogram,
-    plot_fft,
-)
 import numpy as np
+
+from src.audio import load_audio
 from src.analysis import (
+    compute_spectrogram,
     compute_fft,
     generate_sine_wave,
     generate_square_wave,
     generate_triangle_wave,
 )
-
+from src.pitch import estimate_pitch
+from src.visualization import (
+    plot_spectrogram,
+    plot_fft,
+    plot_pitch,
+)
 
 AUDIO_FILE = "data/recorded/statement.wav"
 
@@ -21,7 +21,10 @@ AUDIO_FILE = "data/recorded/statement.wav"
 def main():
     signal, sample_rate = load_audio(AUDIO_FILE)
 
+    # --------------------------------------------------
     # Default spectrogram
+    # --------------------------------------------------
+
     frequencies, times, spectrum = compute_spectrogram(
         signal,
         sample_rate,
@@ -32,6 +35,7 @@ def main():
         times,
         spectrum,
         "Default Spectrogram",
+        "outputs/spectrograms/default.png",
     )
 
     # --------------------------------------------------
@@ -53,6 +57,7 @@ def main():
             times,
             spectrum,
             f"Window Length = {nperseg}",
+            f"outputs/spectrograms/window_length_{nperseg}.png",
         )
 
     # --------------------------------------------------
@@ -74,6 +79,7 @@ def main():
             times,
             spectrum,
             f"Overlap = {overlap}",
+            f"outputs/spectrograms/overlap_{overlap}.png",
         )
 
     # --------------------------------------------------
@@ -100,11 +106,12 @@ def main():
             times,
             spectrum,
             f"Window = {window}",
+            f"outputs/spectrograms/{window}.png",
         )
 
-    # ----------------------------------------
+    # --------------------------------------------------
     # Stage 2.2.1
-    # ----------------------------------------
+    # --------------------------------------------------
 
     sample_rate = 48000
     duration = 1.0
@@ -144,6 +151,7 @@ def main():
         frequencies,
         magnitude,
         "FFT of Synthetic Signal",
+        "outputs/fft/synthetic_fft.png",
     )
 
     frequencies, times, spectrum = compute_spectrogram(
@@ -156,8 +164,10 @@ def main():
         times,
         spectrum,
         "Spectrogram of Synthetic Signal",
+        "outputs/spectrograms/synthetic.png",
     )
-        # --------------------------------------------------
+
+    # --------------------------------------------------
     # Stage 2.2.2
     # Square wave
     # --------------------------------------------------
@@ -177,6 +187,7 @@ def main():
         frequencies,
         magnitude,
         "FFT of Square Wave",
+        "outputs/fft/square_fft.png",
     )
 
     frequencies, times, spectrum = compute_spectrogram(
@@ -189,6 +200,7 @@ def main():
         times,
         spectrum,
         "Spectrogram of Square Wave",
+        "outputs/spectrograms/square.png",
     )
 
     # --------------------------------------------------
@@ -210,6 +222,7 @@ def main():
         frequencies,
         magnitude,
         "FFT of Triangle Wave",
+        "outputs/fft/triangle_fft.png",
     )
 
     frequencies, times, spectrum = compute_spectrogram(
@@ -222,7 +235,9 @@ def main():
         times,
         spectrum,
         "Spectrogram of Triangle Wave",
+        "outputs/spectrograms/triangle.png",
     )
+
     # --------------------------------------------------
     # Stage 2.3
     # Pitch estimation
@@ -243,6 +258,7 @@ def main():
     plot_pitch(
         times,
         pitch,
+        "outputs/pitch/pitch.png",
     )
 
 
