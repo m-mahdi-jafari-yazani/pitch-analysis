@@ -243,23 +243,36 @@ def main():
     # Pitch estimation
     # --------------------------------------------------
 
-    signal, sample_rate = load_audio(AUDIO_FILE)
+    audio_files = [
+        "statement.wav",
+        "question.wav",
+        "sustained_ah.wav",
+        "sustained_ee.wav",
+        "sustained_oo.wav",
+    ]
 
-    frequencies, times, spectrum = compute_spectrogram(
-        signal,
-        sample_rate,
-    )
+    for audio_file in audio_files:
+        audio_path = f"data/recorded/{audio_file}"
 
-    pitch = estimate_pitch(
-        frequencies,
-        spectrum,
-    )
+        signal, sample_rate = load_audio(audio_path)
 
-    plot_pitch(
-        times,
-        pitch,
-        "outputs/pitch/pitch.png",
-    )
+        frequencies, times, spectrum = compute_spectrogram(
+            signal,
+            sample_rate,
+        )
+
+        pitch = estimate_pitch(
+            frequencies,
+            spectrum,
+        )
+
+        output_name = audio_file.replace(".wav", "_pitch.png")
+
+        plot_pitch(
+            times,
+            pitch,
+            f"outputs/pitch/{output_name}",
+        )
 
 
 if __name__ == "__main__":
