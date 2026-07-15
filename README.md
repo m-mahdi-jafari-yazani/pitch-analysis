@@ -1,18 +1,17 @@
 # Pitch Analysis
 
-A Digital Signal Processing (DSP) project for analyzing recorded speech and synthetic signals using Fourier Transform, Spectrogram, and Pitch Estimation.
+A Digital Signal Processing (DSP) project for analyzing recorded speech and synthetic signals using Fourier Transform (FFT), Spectrogram, and Pitch Estimation.
 
 ---
 
 ## Project Overview
 
-This project implements the main concepts of speech signal analysis required in the course assignment. It analyzes recorded audio files and generated synthetic signals using frequency-domain and time-frequency analysis techniques.
+This project implements the required tasks of the DSP course assignment. Recorded speech signals and synthetic signals are analyzed in both the frequency and time-frequency domains.
 
-The implementation includes:
+The project includes:
 
-- Spectrogram computation
-- Effect of spectrogram parameters
-- Fourier Transform (FFT)
+- Spectrogram analysis
+- FFT analysis
 - Synthetic signal generation
 - Pitch estimation
 
@@ -58,7 +57,7 @@ pitch-analysis/
 - Librosa
 - SoundFile
 
-Install dependencies:
+Install the required packages:
 
 ```bash
 pip install -r requirements.txt
@@ -68,53 +67,62 @@ pip install -r requirements.txt
 
 ## Running the Project
 
-Execute:
+Run the project with:
 
 ```bash
 python main.py
 ```
 
-The program automatically performs all required analyses and saves the generated figures inside the `outputs` directory.
+All generated figures are automatically saved in the `outputs` directory.
 
 ---
 
-## Implemented Tasks
+# Implemented Tasks
 
-### 1. Spectrogram Analysis
+## 1. Spectrogram Analysis
 
-The project computes spectrograms for a recorded speech signal.
+A recorded speech signal is analyzed using a spectrogram.
 
-The influence of the following parameters is investigated:
+The following parameters are investigated:
 
-- Window length
-- Window overlap
-- Window type
+- Window Length
+- Window Overlap
+- Window Type
 
-Supported window functions:
+Window functions used:
 
 - Boxcar
 - Hann
 - Hamming
 
+### Effect of Spectrogram Parameters
+
+- Increasing the window length improves frequency resolution but decreases time resolution.
+- Increasing the overlap produces smoother spectrograms while increasing computational cost.
+- Different window types mainly affect spectral leakage while preserving the overall frequency content.
+
 ---
 
-### 2. Frequency Analysis
+## 2. Frequency Analysis
 
-The project generates synthetic signals and analyzes them using the Fast Fourier Transform (FFT).
+Synthetic signals are generated and analyzed using the Fast Fourier Transform (FFT).
 
-Generated signals include:
+Generated signals:
 
 - Sinusoidal signal
 - Square wave
 - Triangle wave
 
-For each signal, both the FFT and spectrogram are computed.
+For each signal, the project computes:
+
+- FFT
+- Spectrogram
 
 ---
 
-### 3. Pitch Estimation
+## 3. Pitch Estimation
 
-Pitch is estimated for all recorded speech samples:
+Pitch estimation is performed for all recorded speech files:
 
 - statement.wav
 - question.wav
@@ -122,49 +130,42 @@ Pitch is estimated for all recorded speech samples:
 - sustained_ee.wav
 - sustained_oo.wav
 
-The estimated pitch contour is plotted and saved automatically.
+The estimated pitch contour is automatically plotted and saved.
 
 ---
 
-## Output Files
+# Output Files
 
-All generated figures are stored automatically.
+The generated figures are stored in:
 
 ```text
 outputs/
 ├── fft/
-│   ├── synthetic_fft.png
-│   ├── square_fft.png
-│   └── triangle_fft.png
-│
 ├── pitch/
-│   ├── question_pitch.png
-│   ├── statement_pitch.png
-│   ├── sustained_ah_pitch.png
-│   ├── sustained_ee_pitch.png
-│   └── sustained_oo_pitch.png
-│
 └── spectrograms/
-    ├── default.png
-    ├── boxcar.png
-    ├── hann.png
-    ├── hamming.png
-    ├── synthetic.png
-    ├── square.png
-    ├── triangle.png
-    ├── overlap_256.png
-    ├── overlap_512.png
-    ├── overlap_768.png
-    ├── window_length_512.png
-    ├── window_length_1024.png
-    └── window_length_2048.png
 ```
+
+---
+
+## Sample Results
+
+### Spectrogram
+
+![Spectrogram](outputs/spectrograms/default.png)
+
+### FFT
+
+![FFT](outputs/fft/synthetic_fft.png)
+
+### Pitch Estimation
+
+![Pitch](outputs/pitch/statement_pitch.png)
 
 ---
 
 ## Recorded Dataset
 
-The recorded dataset consists of five speech recordings:
+The project uses five recorded speech samples.
 
 | File | Description |
 |------|-------------|
@@ -188,4 +189,4 @@ The recorded dataset consists of five speech recordings:
 
 ## Summary
 
-This project demonstrates the fundamental techniques used in speech signal processing, including spectrogram analysis, frequency analysis using FFT, synthetic signal generation, and pitch estimation. All generated results are automatically saved for further inspection.
+This project demonstrates fundamental speech signal processing techniques, including spectrogram analysis, frequency analysis using FFT, synthetic signal generation, and pitch estimation. All generated figures are automatically saved for further inspection.
