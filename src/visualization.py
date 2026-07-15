@@ -34,3 +34,17 @@ def plot_fft(frequencies, magnitude, title):
     plt.grid(True)
     plt.tight_layout()
     plt.show()
+
+def plot_pitch(times, pitch):
+    plt.figure(figsize=(10, 4))
+
+    plt.plot(times, pitch)
+
+    plt.title("Pitch")
+    plt.xlabel("Time (s)")
+    plt.ylabel("Frequency (Hz)")
+
+    plt.grid(True)
+
+    plt.tight_layout()
+    plt.show()

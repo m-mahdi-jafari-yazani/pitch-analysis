@@ -1,3 +1,5 @@
+from src.pitch import estimate_pitch
+from src.visualization import plot_pitch
 from src.audio import load_audio
 from src.analysis import compute_spectrogram
 from src.visualization import (
@@ -220,6 +222,27 @@ def main():
         times,
         spectrum,
         "Spectrogram of Triangle Wave",
+    )
+    # --------------------------------------------------
+    # Stage 2.3
+    # Pitch estimation
+    # --------------------------------------------------
+
+    signal, sample_rate = load_audio(AUDIO_FILE)
+
+    frequencies, times, spectrum = compute_spectrogram(
+        signal,
+        sample_rate,
+    )
+
+    pitch = estimate_pitch(
+        frequencies,
+        spectrum,
+    )
+
+    plot_pitch(
+        times,
+        pitch,
     )
 
 
