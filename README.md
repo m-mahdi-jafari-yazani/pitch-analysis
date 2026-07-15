@@ -155,7 +155,7 @@ outputs/
 
 ### FFT
 
-![FFT](outputs/fft/synthetic_fft.png)
+![FFT](outputs/fft/square_fft.png)
 
 ### Pitch Estimation
 
